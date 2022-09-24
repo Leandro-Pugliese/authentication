@@ -1,15 +1,13 @@
 const express = require("express")
 const mongoose = require("mongoose")
-const bcrypt = require("bcrypt")
-const jwt = require("jsonwebtoken")
-const expressJwt = require("express-jwt")
 const {User, isAuthenticated} = require("./userController")
-
+const cors = require("cors");
 
 // Express y mongoose settings
 mongoose.connect("mongodb://localhost:27017/auth")
 const app = express()
 app.use(express.json())
+app.use(cors())
 
 // Ver clave secreta en la variable de entorno (solo funciona en la maquina local)
 console.log(process.env.SECRET)
